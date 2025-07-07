@@ -1,0 +1,16 @@
+# set public and private keys to a user, keep in mind .crt is the public key and .key is private
+
+$ kubectl config set-credentials martin --client-certificate=martin.crt --client-key=martin.key
+
+# Create a kube-config context giving user martin access to cluster kubernetes inside namespace development
+
+$ kubectl config set-context developer --cluster=kubernetes --user=martin --namespace=development
+
+# Setting a current context to developer
+
+$ kubectl config use-context developer
+
+
+# Apply all yaml files in a one-liner
+
+$ kubectl apply -f jekull-pv.yaml -f jekyll-pvc.yaml -f jekyll-pod.yaml -f Jekyll-svc.yaml
