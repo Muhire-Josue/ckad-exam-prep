@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2025-07-08T08:30:42Z"
+  name: developer-rolebinding
+  namespace: development
+  resourceVersion: "5997"
+  uid: dc89170a-92d5-454a-926f-0446379b31d0
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: developer-role
+  rules:
+  apiGroups: [""]
+  #
+  # at the HTTP level, the name of the resource for accessing ConfigMap
+  # objects is "configmaps"
+  resources: ["configmaps"]
+  resourceNames: ["my-configmap"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: martin
