@@ -1,0 +1,1 @@
+kubectl create rolebinding developer-rolebinding --role=developer-role --user=martin --namespace=development
